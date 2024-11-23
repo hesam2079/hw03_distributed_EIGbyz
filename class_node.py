@@ -13,5 +13,5 @@ class Node:
         self.leaf_flag = leaf_flag
 
     def __repr__(self):
-        message = "value: "+ str(self.value)+ "path:"+ str(self.path)+ "leaf_flag:"+str(self.leaf_flag)
+        message = "value:"+ str(self.value)+ " path:"+ str(self.path)+ " leaf_flag:"+str(self.leaf_flag)
         return message

@@ -9,7 +9,7 @@ class Tree:
         for node in self.list_of_nodes:
             # check that the length of child be grater than the parent
             # and the path of parent exactly repeated at the first of child's path
-            if (len(node.path) == len(parent.path)+1) and (parent.path == node.path[:len(parent.path)-1]):
+            if (len(node.path) == len(parent.path)+1) and (parent.path == node.path[:-1]):
                 childes.append(node)
         return childes
 

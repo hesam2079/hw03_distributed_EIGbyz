@@ -8,7 +8,7 @@ def majority(nodes):
     counter0 = 0
     counter1 = 0
     for node in nodes:
-        if node.value == 1:
+        if int(node.value) == 1:
             counter1 += 1
         else:
             counter0 += 1
@@ -65,6 +65,7 @@ class Process:
         # now all the messages are in dict type
         new_level_nodes = self.generate_next_level_nodes()
         for node in new_level_nodes:
+            value = None
             for message in messages_as_dict:
                 if message["sender"] == node.path[-1] and message["path"] == node.path[:-1]:
                     value = message["value"]
@@ -74,20 +75,18 @@ class Process:
 
 
     def decision_making(self):
-        print(self.tree.list_of_nodes)
         for node in self.tree.list_of_nodes:
-            if node.leaf_flag and node.value is None:
-                print(node)
-                node.value = 0
+            if node.leaf_flag:
+                if node.value is None or node.value == "None":
+                    node.value = 0
         for node in reversed(self.tree.list_of_nodes):
             if not node.leaf_flag:
                 childes = self.tree.get_childes(node)
                 node.value = majority(childes)
-
         return self.root.value
 
     def print_final_info(self):
         values = []
         for node in self.tree.list_of_nodes:
             values.append(node.value)
-        return values , self.tree.list_of_nodes
+        return values
